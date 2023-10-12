@@ -35,7 +35,13 @@ app.use(celebrate.errors());
 app.use(errorHandler);
 
 async function connect() {
-  await mongoose.connect(MONGO_URL);
+  await mongoose.connect(MONGO_URL, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true,
+    autoIndex: true,
+  });
   app.listen(PORT);
 }
 
