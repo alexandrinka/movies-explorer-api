@@ -5,15 +5,15 @@ import {
   createMovie, deleteMovieById, getMovies,
 } from '../controllers/movies.js';
 
-const usersRoutes = express.Router();
+const moviesRoutes = express.Router();
 
-usersRoutes.get('/', getMovies);
-usersRoutes.delete('/:movieId', celebrate({
+moviesRoutes.get('/', getMovies);
+moviesRoutes.delete('/:movieId', celebrate({
   params: Joi.object().keys({
     movieId: Joi.string().length(24).hex().required(),
   }),
 }), deleteMovieById);
-usersRoutes.post('/', celebrate({
+moviesRoutes.post('/', celebrate({
   body: Joi.object().keys({
     country: Joi.string().required(),
     director: Joi.string().required(),
@@ -29,4 +29,4 @@ usersRoutes.post('/', celebrate({
   }),
 }), createMovie);
 
-export default usersRoutes;
+export default moviesRoutes;
