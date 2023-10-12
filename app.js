@@ -5,9 +5,9 @@ import * as dotenv from 'dotenv';
 import celebrate from 'celebrate';
 import cors from 'cors';
 import rateLimit from 'express-rate-limit';
-import routes from './routes/index';
-import errorHandler from './middlewares/error-handler';
-import { requestLogger, errorLogger } from './middlewares/logger';
+import routes from './routes/index.js';
+import errorHandler from './middlewares/error-handler.js';
+import { requestLogger, errorLogger } from './middlewares/logger.js';
 
 dotenv.config();
 
@@ -29,8 +29,8 @@ app.use(express.json());
 app.use(requestLogger);
 app.use(routes);
 app.use(limiter);
-app.use(errorLogger);
 
+app.use(errorLogger);
 app.use(celebrate.errors());
 app.use(errorHandler);
 

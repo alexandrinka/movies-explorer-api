@@ -1,7 +1,7 @@
-import Movie from '../models/Movie';
-import NotFoundError from '../errors/not-found-err';
-import InvalidRequest from '../errors/invalid-request';
-import NoRight from '../errors/no-right';
+import Movie from '../models/Movie.js';
+import NotFoundError from '../errors/not-found-err.js';
+import InvalidRequest from '../errors/invalid-request.js';
+import NoRight from '../errors/no-right.js';
 
 export const getMovies = async (req, res, next) => {
   try {

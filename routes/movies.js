@@ -3,7 +3,7 @@ import { celebrate, Joi } from 'celebrate';
 
 import {
   createMovie, deleteMovieById, getMovies,
-} from '../controllers/movies';
+} from '../controllers/movies.js';
 
 const usersRoutes = express.Router();
 
