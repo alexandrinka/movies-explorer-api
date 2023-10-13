@@ -6,8 +6,7 @@ import NoRight from '../errors/no-right.js';
 export const getMovies = async (req, res, next) => {
   try {
     const { _id } = req.user;
-    const { movieId } = req.params;
-    const movies = await Movie.find({ owner: { _id }, _id: movieId });
+    const movies = await Movie.find({ owner: { _id } });
     res.status(200).send(movies);
   } catch (err) {
     next(err);
