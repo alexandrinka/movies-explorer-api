@@ -7,10 +7,8 @@ export const getMovies = async (req, res, next) => {
   try {
     const { _id } = req.user;
     const { movieId } = req.params;
-    if (await Movie.findOne({ owner: { _id }, _id: movieId })) {
-      const movies = await Movie.find({});
-      res.status(200).send(movies);
-    }
+    const movies = await Movie.find({ owner: { _id }, _id: movieId });
+    res.status(200).send(movies);
   } catch (err) {
     next(err);
   }
