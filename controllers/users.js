@@ -62,6 +62,8 @@ export const updateProfileUser = async (req, res, next) => {
   } catch (err) {
     if (err.name === 'ValidationError') {
       next(new InvalidRequest('Неправильные данные'));
+    } else if (err.code === 11000) {
+      next(new UserAuthorized('Пользователь с таким email уже зарегистрирован'));
     } else {
       next(err);
     }
