@@ -15,11 +15,11 @@ export const getUser = async (req, res, next) => {
 };
 
 export const createUser = async (req, res, next) => {
-  const { email, password } = req.body;
+  const { name, email, password } = req.body;
   try {
     if (!email || !password) throw new InvalidRequest('Неправильный адрес электронной почты или пароль');
     const hash = await bcrypt.hash(password, 10);
-    const { _id } = await User.create({ email, password: hash });
+    const { _id } = await User.create({ name, email, password: hash });
     res.status(201).send({ _id });
   } catch (err) {
     if (err.name === 'ValidationError') {
